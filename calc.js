@@ -199,6 +199,8 @@ function handleEquals() {
 function handleClear() {
     resetOperand();
     operations = [];
+    state.solved = false;
+    state.awaitingOperand = false;
 }
 
 function handleDelete() {

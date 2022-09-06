@@ -67,8 +67,8 @@ body {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
+    gap: 3px;
+    padding: 3px;
     align-content: space-around;
     justify-content: space-around;
 }
@@ -88,6 +88,11 @@ body {
 
 .btn-operator:hover {
     background-color: #D81E5B;
+
+}
+
+.btn-num {
+    /* background: rgba(0, 0, 0, 0.5); */
 
 }
 

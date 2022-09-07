@@ -182,7 +182,14 @@ function handleOperator(op) {
 }
 
 function handleSign() {
-    currentInput = "-" + currentInput;
+    if (!state.negative) {
+        currentInput = "-" + currentInput;
+        state.negative = true;
+    } else {
+        let negativeIndex = currentInput.indexOf('-');
+        currentInput = currentInput.slice(negativeIndex + 1);
+        state.negative = false;
+    }
     inputDisplay.textContent = currentInput;
 }
 
@@ -233,6 +240,7 @@ function resetOperand() {
     numDigitsInOperand = 0;
     currentInput = '';
     inputDisplay.textContent = 0;
+    state.negative = false;
 }
 
 function calculateOperations() {

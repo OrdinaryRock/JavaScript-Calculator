@@ -179,9 +179,14 @@ function handleOperator(op) {
         currentOperator = op;
         state.solved = false;
     }
+    else if (state.awaitingOperand = true) {
+        inputDisplay.textContent = op;
+        currentOperator = op;
+    }
 }
 
 function handleSign() {
+    if (state.solved) handleClear();
     if (!state.negative) {
         currentInput = "-" + currentInput;
         state.negative = true;

@@ -179,7 +179,7 @@ function handleOperator(op) {
         currentOperator = op;
         state.solved = false;
     }
-    else if (state.awaitingOperand = true) {
+    else if (state.awaitingOperand) {
         inputDisplay.textContent = op;
         currentOperator = op;
     }

@@ -1,6 +1,7 @@
 'use strict';
 
 const MAX_OPERAND_LENGTH = 10;
+const MAX_EQUATION_LENGTH = 40;
 
 const buttons = document.querySelector('.buttons-container');
 const inputDisplay = document.querySelector('.input-display')
@@ -61,7 +62,7 @@ document.addEventListener('keydown', function (e) {
             break;
     }
 
-    equationDisplay.textContent = operations.join(' ');
+    updateEquation(operations);
 
 });
 
@@ -111,7 +112,7 @@ buttons.addEventListener('click', function (e) {
         handleDelete();
     }
 
-    equationDisplay.textContent = operations.join(' ');
+    updateEquation(operations);
 
 })
 
@@ -248,6 +249,14 @@ function resetOperand() {
     state.negative = false;
 }
 
+function updateEquation(op) {
+    let equationString = op.join(' ');
+    if (equationString.length > MAX_EQUATION_LENGTH) {
+        equationString = '. . . ' + equationString.slice(-MAX_EQUATION_LENGTH);
+    }
+    equationDisplay.textContent = equationString;
+}
+
 function calculateOperations() {
     let arr = [...operations]
 
@@ -298,37 +307,6 @@ function calculateOperations() {
         }
     }
 
-
-
-    // operationsClone.forEach((v, i, a) => {
-    //     if (v === '^') {
-    //         let result = Math.pow(a.at(i - 1), a.at(i + 1))
-    //         a.splice(i - 1, i + 2, result);
-    //     }
-    // })
-    // operationsClone.forEach((v, i, a) => {
-    //     console.log(v);
-    //     let op1 = Number(a.at(i - 1));
-    //     let op2 = Number(a.at(i + 1));
-    //     if (v === '*') {
-    //         let result = op1 * op2;
-    //         a.splice(i - 1, i + 2, result);
-    //     }
-    //     if (v === '/') {
-    //         let result = op1 / op2;
-    //         a.splice(i - 1, i + 2, result);
-    //     }
-    // })
-    // operationsClone.forEach((v, i, a) => {
-    //     if (v === '+') {
-    //         let result = a.at(i - 1) + a.at(i + 1);
-    //         a.splice(i - 1, i + 2, result);
-    //     }
-    //     if (v === '-') {
-    //         let result = a.at(i - 1) - a.at(i + 1);
-    //         a.splice(i - 1, i + 2, result);
-    //     }
-    // })
     let result = arr[0] + "";
     // result = result.slice(0, 12);
     let maxLength = MAX_OPERAND_LENGTH;
